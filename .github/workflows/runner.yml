@@ -16,7 +16,7 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - uses: actions/checkout
+      - uses: actions/checkout@v4
       - name: Run Container
         run: docker compose up -d --build --force-recreate
         env:
