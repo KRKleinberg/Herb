@@ -1,4 +1,4 @@
-FROM node:lts-slim AS runner
+FROM node:lts-slim
 WORKDIR /app
 ENV NODE_ENV=production
 
