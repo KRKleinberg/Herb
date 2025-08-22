@@ -17,12 +17,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
+      - name: Create .env
+        run: |
+          touch .env
+          echo DISCORD_APP_ID=${{ secrets.DISCORD_APP_ID }} >> .env
+          echo DISCORD_BOT_TOKEN=${{ secrets.DISCORD_BOT_TOKEN }} >> .env
+          echo PREFIX=${{ secrets.PREFIX }} >> .env
+          cat .env
+
       - name: Run Container
         run: docker compose up -d --build --force-recreate
-        env:
-          DISCORD_APP_ID: ${{ secrets.DISCORD_APP_ID }}
-          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
-          PREFIX: ${{ secrets.PREFIX }}
 
       - name: Prune Images
         run: docker image prune -f
