@@ -1,2 +1,2 @@
 # Herb
-A discord bot that sends market trade notifications
+A discord app that sends market trade notifications

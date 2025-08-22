@@ -1,0 +1,31 @@
+name: Docker Runner
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  run:
+    runs-on: self-hosted
+
+    steps:
+      - uses: actions/checkout
+      - name: Run Container
+        run: docker compose up -d --build --force-recreate
+        env:
+          DISCORD_APP_ID: ${{ secrets.DISCORD_APP_ID }}
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          PREFIX: ${{ secrets.PREFIX }}
+
+      - name: Prune Images
+        run: docker image prune -f
+
+      - name: Prune Excess Build Cache
+        run: docker buildx prune -f --max-used-space=1gb

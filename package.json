@@ -1,0 +1,37 @@
+{
+	"name": "herb",
+	"version": "1.0.0",
+	"description": "A discord app that sends market trade notifications",
+	"main": "src/index.ts",
+	"scripts": {
+		"start": "tsx src/index.ts",
+		"test": "tsx --env-file=.env src/index.ts"
+	},
+	"type": "module",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/KRKleinberg/Herb.git"
+	},
+	"author": "Kevin Kleinberg",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/KRKleinberg/Herb/issues"
+	},
+	"homepage": "https://github.com/KRKleinberg/Herb#readme",
+	"imports": {
+		"#utils/*": "./src/utils/*.ts",
+		"#core/*": "./src/core/*.ts"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.33.0",
+		"@types/node": "^24.3.0",
+		"eslint": "^9.33.0",
+		"globals": "^16.3.0",
+		"jiti": "^2.5.1",
+		"typescript-eslint": "^8.40.0"
+	},
+	"dependencies": {
+		"discord.js": "^14.22.0",
+		"tsx": "^4.20.4"
+	}
+}

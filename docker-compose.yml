@@ -1,0 +1,10 @@
+services:
+  main:
+    container_name: herb
+    image: herb:latest
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    restart: unless-stopped
